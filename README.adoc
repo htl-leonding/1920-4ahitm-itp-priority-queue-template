@@ -1,0 +1,163 @@
+= Übung Priority Queue
+// Metadata
+:author: Thomas W. Stütz
+:email: t.stuetz@htl-leonding.ac.at
+:date: 2019-12-16
+:revision:  1.0
+// Settings
+:source-highlighter: coderay
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+// Refs:
+:imagesdir: assets
+:sourcedir-code: src/main/java/at/htl/priority
+:sourcedir-test: src/test/java/at/htl/priority
+:toc:
+
+Version: {revision}
+
+++++
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+++++
+
+== Ausgangssituation
+
+"In computer science, a priority queue is an abstract data type which is like a regular queue or stack data structure, but where additionally each element has a "priority" associated with it. In a priority queue, an element with high priority is served before an element with low priority. In some implementations, if two elements have the same priority, they are served according to the order in which they were enqueued, while in other implementations, ordering of elements with the same priority is undefined."
+-- wikipedia
+
+"In der Informatik ist eine Vorrangwarteschlange (auch Prioritätenliste, Prioritätsschlange, Prioritätswarteschlange oder englisch priority queue genannt) eine spezielle abstrakte Datenstruktur, genauer eine erweiterte Form einer Warteschlange. Den Elementen, die in die Warteschlange gelegt werden, wird eine Priorität mitgegeben, die die Reihenfolge der Abarbeitung der Elemente bestimmt. "
+-- wikipedia
+
+== Aufgabe 1: Implementierung der Priority Queue
+
+Implementieren Sie eine eigene Priority Queue mit folgenden Klassen:
+
+
+.Class Diagram MyPriorityQueue
+image::CLD-MyPriorityQueue-plantuml.png[CLD]
+
+////
+[plantuml,CLD,png]
+----
+@startuml
+class MyPriorityQueue {
+  head: Node
+  isEmpty(): boolean
+  addString(String, int): void
+  remove(): String
+  printToConsole(): void
+}
+class Node {
+  next: Node
+  data: String
+  priority: int
+}
+Node --> Node
+MyPriorityQueue <-left- Node
+@enduml
+----
+////
+
+IMPORTANT: Es ist verboten, Arrays, Listen oder sonstige Collections zu verwenden. Die priority queue ist selbst zu implementieren.
+
+.Methoden
+|===
+|Methode |Beschreibung
+
+|isEmpty()
+|Rückgabe von `true`, wenn die priority queue leer ist, sonst `true`
+
+|add(String data, int priority)
+|Hinzufügen eines Elements mit einem String als Datum und der Priorität an der
+richtigen Stelle in der priority queue
+
+|remove()
+|Das Element mit der höchsten Priorität wird gelöscht und als Funktionswert zurückgegeben
+
+|printToConsole()
+|Der Inhalt der priority queue wird auf der Konsole ausgegeben
+|===
+
+Die genaue Beschreibung der Methoden finden Sie in den Klassen.
+
+== Aufgabe 2: Erstellen der UnitTests
+
+Erstellen Sie nun Unit-Tests, die die Funktion Ihrer priority queue systematisch testen
+
+image::Unittests.png[Unittests]
+
+Ihre Unit-Tests sollen folgende Ausgabe ergeben:
+
+----
+<empty>
+5 (chillen)
+<empty>
+
+
+<empty>
+
+
+<empty>
+80 (lernen)
+80 (lernen)  5 (chillen)
+80 (lernen)  15 (bingen)  5 (chillen)
+90 (sporteln)  80 (lernen)  15 (bingen)  5 (chillen)
+90 (sporteln)  80 (lernen)  15 (bingen)  5 (chillen)  2 (whatsappen)
+80 (lernen)  15 (bingen)  5 (chillen)  2 (whatsappen)
+15 (bingen)  5 (chillen)  2 (whatsappen)
+5 (chillen)  2 (whatsappen)
+2 (whatsappen)
+<empty>
+
+
+<empty>
+80 (lernen)
+80 (lernen)  5 (chillen)
+80 (lernen)  5 (chillen)  5 (bingen)
+90 (sporteln)  80 (lernen)  5 (chillen)  5 (bingen)
+90 (sporteln)  80 (lernen)  5 (chillen)  5 (bingen)  2 (whatsappen)
+80 (lernen)  5 (chillen)  5 (bingen)  2 (whatsappen)
+5 (chillen)  5 (bingen)  2 (whatsappen)
+5 (bingen)  2 (whatsappen)
+2 (whatsappen)
+<empty>
+
+
+<empty>
+
+
+<empty>
+1 (priorität 1)
+1 (priorität 1)  0 (priorität 120 -> 0)
+0 (priorität 120 -> 0)
+<empty>
+
+
+<empty>
+1 (priorität 1)
+1 (priorität 1)  0 (priorität 10 -> 0)
+0 (priorität 10 -> 0)
+<empty>
+----
+
+== Aufgabe 3: Zusätzliche Tests
+
+Welche Zusätzlichen Tests fallen Ihnen noch ein - was sollte noch getestet werden. Tragen Sie Ihre Antworten in die Datei
+`Answers.adoc` ein.
+
+== Aufgabe 4: Datenbank
+
+Persisitieren Sie den momentanen Imnhalt der priority queue in einer Datenbank.
+
+== Aufgabe 5: Testen Sie den Datenbankinhalt
+
+Verwenden Sie hierzu AssertJ-DB.
+
+. Befüllen Sie die priority queue mit ein paar Einträgen
+. Persistieren Sie diese in der DB
+. Lesen Sie die Datenbank aus und kontrollieren Sie die Korrektheit der Einträge
+
+
+== Aufgabe 6: Arbeitsergebnisse dokumentieren
+
+Tragen Sie in der Datei answers.adoc Ihre erstellten Aufgaben ein

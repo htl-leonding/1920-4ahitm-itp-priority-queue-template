@@ -1,0 +1,20 @@
+Name:
+
+Antwort auf Frage 3:
+
+* ...
+* ...
+* ...
+
+Frage 6:
+
+Folgende Aufgaben habe ich beantwortet / durchgeführt
+
+* [ ] Aufgabe 1: Implementierung der Priority Queue
+* [ ] Aufgabe 2: Erstellen der UnitTests
+* [ ] Aufgabe 3: Zusätzliche Tests
+* [ ] Aufgabe 4: Datenbank
+* [ ] Aufgabe 5: Testen Sie den Datenbankinhalt
+
+
+* [x] So kreuzen Sie die Antworten an: `[x]`
